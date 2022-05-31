@@ -5,6 +5,7 @@ import {ILoggerModel, Logger} from "../models/logger";
 
 export class PairingsService extends BaseService<IPairingModel>{
 
+
     constructor() {
         super(Pairing, [{path: "plant", model: Plant}, {path: "logger", model: Logger}]);
     }
