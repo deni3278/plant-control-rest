@@ -20,7 +20,6 @@
     "cookie-parser": "1.4.5",
     "dotenv": "10.0.0",
     "express": "4.17.1",
-    "express-openapi-validator": "4.10.8",
     "mongoose": "5.13.5",
     "mongoose-sequence": "5.3.1",
     "morgan": "1.10.0",
@@ -39,15 +38,12 @@
     "chai": "4.3.4",
     "cross-env": "7.0.3",
     "eslint": "7.32.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-prettier": "3.4.0",
     "husky": "6.0.0",
     "lint-staged": "11.1.1",
     "mocha": "8.4.0",
     "mocha-junit-reporter": "2.0.0",
     "nodemon": "2.0.12",
     "pino-pretty": "5.1.2",
-    "prettier": "2.3.2",
     "shelljs": "0.8.4",
     "supertest": "6.1.4",
     "ts-node": "9.1.1",
@@ -57,10 +53,5 @@
     "hooks": {
       "pre-commit": "lint-staged && yarn lint && yarn typecheck"
     }
-  },
-  "lint-staged": {
-    "{{server/**/*,test/**/*}.{js,jsx,ts,tsx,json,css,scss,yml,yaml}}": [
-      "prettier --write"
-    ]
   }
 }
