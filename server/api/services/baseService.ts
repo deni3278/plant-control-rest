@@ -12,18 +12,22 @@ export abstract class BaseService<T> {
     }
 
     getAll(): Promise<T[]> {
+        l.info(`Getting all ${this._repository.modelName}`);
         return this._repository.find().populate(this._populateOnFind).exec();
     }
 
     get(id: any): Promise<T> {
+        l.info(`Getting ${this._repository.modelName} with id ${id}`);
         return this._repository.findById(id).populate(this._populateOnFind).exec();
     }
 
     create(item: T): Promise<T> {
+        l.info(`Creating ${this._repository.modelName}`);
         return this._repository.create(item);
     }
 
     update(id: string, item: T) {
+        l.info(`Updating ${this._repository.modelName} with id ${id}`);
         return this._repository.findByIdAndUpdate(id, item);
     }
 }

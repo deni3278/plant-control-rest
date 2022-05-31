@@ -55,19 +55,19 @@ async function test() {
     //     console.log(logs);
     // });
 
-    // const service = new LoggersService();
-    // service.getAll().then(loggers => {
-    //     console.log(loggers);
-    // });
+    const service = new LoggersService();
+    service.getAll().then(loggers => {
+        console.log(loggers);
+    });
     // const service = new LogsService();
     // service.getAll().then(logs => {
     //     console.log(logs);
     // });
 
-    const pairings = new PairingsService();
-    pairings.getAll().then(pairings => {
-        console.log(pairings);
-    });
+    // const pairings = new PairingsService();
+    // pairings.getAll().then(pairings => {
+    //     console.log(pairings);
+    // });
 
 }
 
