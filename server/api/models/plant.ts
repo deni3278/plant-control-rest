@@ -18,7 +18,7 @@ const schema = new mongoose.Schema(
         image: { type: Buffer }
     },
     {
-        collection: "examples",
+        collection: "plants",
     }
 );
 
