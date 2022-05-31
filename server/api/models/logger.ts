@@ -11,7 +11,7 @@ export interface ILoggerModel extends mongoose.Document {
 
 const schema = new mongoose.Schema(
     {
-        id: { type: Number, unique: true },
+        id: {type: Number, unique: true},
         name: {type: String, required: true},
         isPaired: {type: Boolean, default: false, required: true},
     },
