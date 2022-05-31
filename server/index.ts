@@ -8,7 +8,9 @@ import {Example} from "./api/models/example";
 import Logger from "./common/logger";
 import {Pairing} from "./api/models/pairing";
 import {Log} from "./api/models/log";
-import {LoggersService} from "./api/services/loggers_service";
+import {LoggersService} from "./api/services/loggersService";
+import {LogsService} from "./api/services/logsService";
+import {PairingsService} from "./api/services/pairingsService";
 
 const port = parseInt(process.env.PORT || "3000");
 const connectionString =
@@ -48,14 +50,23 @@ async function savePairing() {
     // await log.save().then(log => {
     //     console.log(log);
     // });
-
-    // Log.findOne().populate("pairing", Pairing).then(logs => {
+    //
+    // Log.findOne().populate({path: "pairing", model: Pairing}).then(logs => {
     //     console.log(logs);
     // });
 
-    const service = new LoggersService();
-    service.getAll().then(loggers => {
-        console.log(loggers);
+    // const service = new LoggersService();
+    // service.getAll().then(loggers => {
+    //     console.log(loggers);
+    // });
+    // const service = new LogsService();
+    // service.getAll().then(logs => {
+    //     console.log(logs);
+    // });
+
+    const pairings = new PairingsService();
+    pairings.getAll().then(pairings => {
+        console.log(pairings);
     });
 
 }

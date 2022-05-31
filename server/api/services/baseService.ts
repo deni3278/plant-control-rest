@@ -1,12 +1,12 @@
-import {Model} from "mongoose";
+import mongoose, {Model} from "mongoose";
 import l from "../../common/logger";
 
 
 export abstract class BaseService<T> {
     private _repository: Model<T>;
-    private _populateOnFind: string[];
+    private _populateOnFind: { path: string, model: Model<any> }[];
 
-    constructor(repository: Model<T>, populateOnFind: string[] = []) {
+    constructor(repository: Model<T>, populateOnFind: { path: string, model: Model<any> }[] = []) {
         this._repository = repository;
         this._populateOnFind = populateOnFind;
     }
