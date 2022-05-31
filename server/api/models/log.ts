@@ -15,18 +15,18 @@ export interface ILogModel extends mongoose.Document {
 
 const schema = new mongoose.Schema(
     {
-        id: { type: Number, unique: true, required: true },
-        time: { type: Date, required: true},
-        temperature: { type: Number, required: true},
-        humidity: { type: Number, required: true},
-        moisture: { type: Number, required: true},
-        pairing: { type: mongoose.Schema.Types.ObjectId, ref: 'Pairing', required: true}
+        id: {type: Number, unique: true, required: true},
+        time: {type: Date, required: true},
+        temperature: {type: Number, required: true},
+        humidity: {type: Number, required: true},
+        moisture: {type: Number, required: true},
+        pairing: {type: mongoose.Schema.Types.ObjectId, ref: 'Pairing', required: true}
     },
     {
         collection: "logs",
     }
 );
 
-schema.plugin(AutoIncrement, { inc_field: "id" });
+schema.plugin(AutoIncrement, {id: "log_id", inc_field: "id"});
 
 export const Log = mongoose.model<ILogModel>("Log", schema);

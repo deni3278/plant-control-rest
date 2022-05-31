@@ -26,6 +26,6 @@ const schema = new mongoose.Schema(
     }
 );
 
-schema.plugin(AutoIncrement, { inc_field: "id" });
+schema.plugin(AutoIncrement, {id:"pairing_id", inc_field: "id" });
 
 export const Pairing = mongoose.model<IPairingModel>("Pairing", schema);

@@ -2,6 +2,8 @@ import "./common/env";
 import Database from "./common/database";
 import Server from "./common/server";
 import routes from "./routes";
+import {Plant} from "./api/models/plant";
+import {Example} from "./api/models/example";
 
 const port = parseInt(process.env.PORT || "3000");
 const connectionString =
@@ -15,3 +17,9 @@ const connectionString =
 
 const db = new Database(connectionString);
 export default new Server().database(db).router(routes).listen(port);
+
+const plant = new Plant({name: "test", createdAt: new Date()});
+plant.save().then(r => console.log(r));
+
+
+

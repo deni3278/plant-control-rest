@@ -20,6 +20,6 @@ const schema = new mongoose.Schema(
     }
 );
 
-schema.plugin(AutoIncrement, { inc_field: "id" });
+schema.plugin(AutoIncrement, {id:"logger_id", inc_field: "id" });
 
 export const Example = mongoose.model<ILoggerModel>("Logger", schema);

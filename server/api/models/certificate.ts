@@ -12,15 +12,15 @@ export interface ICertificateModel extends mongoose.Document {
 
 const schema = new mongoose.Schema(
     {
-        id: { type: Number, unique: true, required: true },
-        createdAt: { type: Date, required: true },
-        pairing: { type: mongoose.Schema.Types.ObjectId, ref: 'Pairing', required: true }
+        id: {type: Number, unique: true, required: true},
+        createdAt: {type: Date, required: true},
+        pairing: {type: mongoose.Schema.Types.ObjectId, ref: 'Pairing', required: true}
     },
     {
         collection: "certificates",
     }
 );
 
-schema.plugin(AutoIncrement, { inc_field: "id" });
+schema.plugin(AutoIncrement, {id: "certificate_id", inc_field: "id"});
 
 export const Certificate = mongoose.model<ICertificateModel>("Certificate", schema);
