@@ -13,7 +13,7 @@ const schema = new mongoose.Schema(
     {
         id: { type: Number, unique: true },
         name: {type: String, required: true},
-        isPaired: {type: Boolean, default: false},
+        isPaired: {type: Boolean, default: false, required: true},
     },
     {
         collection: "loggers",
