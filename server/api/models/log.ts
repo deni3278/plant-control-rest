@@ -15,7 +15,7 @@ export interface ILogModel extends mongoose.Document {
 
 const schema = new mongoose.Schema(
     {
-        id: {type: Number, unique: true, required: true},
+        id: {type: Number, unique: true},
         time: {type: Date, required: true},
         temperature: {type: Number, required: true},
         humidity: {type: Number, required: true},

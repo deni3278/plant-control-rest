@@ -12,7 +12,7 @@ export interface ICertificateModel extends mongoose.Document {
 
 const schema = new mongoose.Schema(
     {
-        id: {type: Number, unique: true, required: true},
+        id: {type: Number, unique: true},
         createdAt: {type: Date, required: true},
         pairing: {type: mongoose.Schema.Types.ObjectId, ref: 'Pairing', required: true}
     },
