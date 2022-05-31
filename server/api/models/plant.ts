@@ -5,6 +5,8 @@ const AutoIncrement = sequence(mongoose);
 
 export interface IPlantModel extends mongoose.Document {
     id: number;
+    loggerId: number;
+    plantId: number;
     name: string;
     createdAt: Date;
     image: Buffer;
@@ -13,6 +15,8 @@ export interface IPlantModel extends mongoose.Document {
 const schema = new mongoose.Schema(
     {
         id: { type: Number, unique: true, required: true },
+        loggerId: { type: Number, required: true },
+        plantId: { type: Number, required: true },
         name: { type: String, required: true },
         createdAt: { type: Date, required: true},
         image: { type: Buffer }
