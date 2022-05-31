@@ -36,8 +36,21 @@ async function savePairing() {
     // console.log(pairingSaved);
 
 
-    Pairing.findOne().populate({path: "plant", model: Plant}).populate("logger", PlantLogger).then(pairings => {
-        console.log(pairings);
+    // Pairing.findOne().populate({path: "plant", model: Plant}).populate("logger", PlantLogger).then(pairings => {
+    //     console.log(pairings);
+    // });
+
+    // const pairing = await Pairing.findOne()
+
+    // const log = new Log(
+    //     {name: "test", time: new Date(), pairing: pairing, moisture: 10, temperature: 10, humidity: 10});
+    // await log.save().then(log => {
+    //     console.log(log);
+    // });
+
+    Log.findOne().populate("pairing", Pairing).then(logs => {
+        console.log(logs);
     });
+
 }
 
