@@ -25,9 +25,9 @@ const connectionString =
 const db = new Database(connectionString);
 export default new Server().database(db).router(routes).listen(port);
 
-savePairing();
+test();
 
-async function savePairing() {
+async function test() {
     // const plant = new Plant({name: "test", createdAt: new Date()});
     // const plantSaved = await plant.save();
     //

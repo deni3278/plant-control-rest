@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import sequence from "mongoose-sequence";
 
+
 const AutoIncrement = sequence(mongoose);
 
 export interface ILoggerModel extends mongoose.Document {

@@ -3,6 +3,7 @@ import sequence from "mongoose-sequence";
 import {IPairingModel} from "./pairing";
 import {IPlantModel} from "./plant";
 
+
 const AutoIncrement = sequence(mongoose);
 
 export interface ICertificateModel extends mongoose.Document {
