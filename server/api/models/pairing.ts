@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import sequence from "mongoose-sequence";
-import {IPlantModel} from "./plant";
-import {ILoggerModel} from "./logger";
 
 const AutoIncrement = sequence(mongoose);
 
@@ -9,8 +7,8 @@ export interface IPairingModel extends mongoose.Document {
     id: number;
     name: string;
     createdAt: Date;
-    plant: IPlantModel;
-    logger: ILoggerModel;
+    plant: mongoose.Types.ObjectId;
+    logger: mongoose.Types.ObjectId;
 }
 
 const schema = new mongoose.Schema(

@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import sequence from "mongoose-sequence";
-import {IPairingModel} from "./pairing";
-import {IPlantModel} from "./plant";
 
 
 const AutoIncrement = sequence(mongoose);
@@ -9,7 +7,7 @@ const AutoIncrement = sequence(mongoose);
 export interface ICertificateModel extends mongoose.Document {
     id: number;
     createdAt: Date;
-    plant: IPlantModel;
+    plant: mongoose.Types.ObjectId;
 }
 
 const schema = new mongoose.Schema(

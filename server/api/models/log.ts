@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import sequence from "mongoose-sequence";
-import {IPairingModel} from "./pairing";
 
 const AutoIncrement = sequence(mongoose);
 
@@ -10,7 +9,7 @@ export interface ILogModel extends mongoose.Document {
     temperature: number;
     humidity: number;
     moisture: number;
-    pairing: IPairingModel;
+    pairing: mongoose.Types.ObjectId;
 }
 
 const schema = new mongoose.Schema(
