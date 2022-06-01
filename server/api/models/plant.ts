@@ -7,7 +7,7 @@ export interface IPlantModel extends mongoose.Document {
     id: number;
     name: string;
     createdAt: Date;
-    image: Buffer;
+    image?: Buffer;
 }
 
 const schema = new mongoose.Schema(
