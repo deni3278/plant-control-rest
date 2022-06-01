@@ -14,7 +14,7 @@ const schema = new mongoose.Schema(
     {
         id: {type: Number, unique: true},
         createdAt: {type: Date, required: true},
-        plant: {type: mongoose.Schema.Types.ObjectId, ref: 'Plant', required: true}
+        plant: {type: mongoose.Schema.Types.ObjectId, ref: 'Plant', unique: true, required: true}
     },
     {
         collection: "certificates",
