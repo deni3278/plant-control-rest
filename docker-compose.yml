@@ -35,3 +35,9 @@ services:
       - ${REST_PORT}:80
     depends_on:
       - db
+
+volumes:
+  test-db:
+    external: true
+  prod-db:
+    external: true

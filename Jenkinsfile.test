@@ -2,56 +2,66 @@ pipeline {
     agent any
 
     stages {
+        stage('Install dependencies') {
+            steps {
+                sh 'yarn install'
+            }
+        }
+
         stage('Run unit test(s)') {
             steps {
                 sh 'yarn run test'
             }
         }
 
-        stage('Build API') {
+        stage('Build, Dockerize, and deploy') {
             when {
                 anyOf {
                     changeset 'server/**'
                 }
             }
 
-            steps {
-                sh 'yarn run build'
-            }
-        }
-
-        stage('Build image(s)') {
-            steps {
-                sh 'docker compose --env-file test.env build'
-            }
-        }
-
-        stage('Stop and remove old container(s)') {
-            steps {
-                script {
-                    try {
-                        sh 'docker compose -p test-rest --env-file test.env down'
-                    } catch (err) {}
+            stages {
+                stage('Build API') {
+                    steps {
+                        sh 'sudo yarn run compile'
+                    }
                 }
-            }
-        }
 
-        stage('Create and start new container(s)') {
-            steps {
-                sh 'docker compose -p test-rest --env-file test.env up -d'
-                sh 'docker ps'
-            }
-        }
+                stage('Build image(s)') {
+                    steps {
+                        sh 'docker compose --env-file test.env build'
+                    }
+                }
 
-        stage('Push image(s) to registry') {
-            steps {
-                sh 'docker compose --env-file test.env push'
-            }
-        }
+                stage('Stop and remove old container(s)') {
+                    steps {
+                        script {
+                            try {
+                                sh 'docker compose -p test-rest --env-file test.env down'
+                            } catch (err) {}
+                        }
+                    }
+                }
 
-        stage('Deploy to production') {
-            steps {
-                build job: 'prod-rest', wait: false
+                stage('Create and start new container(s)') {
+                    steps {
+                        sh 'docker compose -p test-rest --env-file test.env up -d'
+                        sh 'docker ps'
+                    }
+                }
+
+                stage('Push image(s) to registry') {
+                    steps {
+                        sh 'docker compose --env-file test.env push'
+                    }
+                }
+
+                stage('Deploy to production') {
+                    steps {
+                        build job: 'prod-rest', wait: false
+                    }
+                }
             }
         }
     }
