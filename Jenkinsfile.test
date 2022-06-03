@@ -4,27 +4,27 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
         stage('Run unit test(s)') {
             steps {
-                sh 'yarn run test'
+                sh 'npm run test:e2e'
             }
         }
 
         stage('Build, Dockerize, and deploy') {
             when {
                 anyOf {
-                    changeset 'server/**'
+                    changeset 'src/**'
                 }
             }
 
             stages {
                 stage('Build API') {
                     steps {
-                        sh 'sudo yarn run compile'
+                        sh 'sudo npm run build'
                     }
                 }
 
