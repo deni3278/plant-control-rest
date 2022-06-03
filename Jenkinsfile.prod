@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Stop and remove old container(s)') {
+            steps {
+                script {
+                    try {
+                        sh 'docker compose -p prod-rest --env-file prod.env down'
+                    } catch (err) {}
+                }
+            }
+        }
+
+        stage('Pull image(s)') {
+            steps {
+                sh 'docker compose --env-file prod.env pull'
+            }
+        }
+
+        stage('Create and start new container(s)') {
+            steps {
+                    sh 'docker compose -p prod-rest --env-file prod.env up -d'
+                    sh 'docker ps'
+            }
+        }
+    }
+}
