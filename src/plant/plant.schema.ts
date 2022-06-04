@@ -10,9 +10,6 @@ export class Plant {
 
     @Prop({required: true, default: Date.now})
     createdAt: Date;
-
-    @Prop()
-    image?: Buffer;
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);
