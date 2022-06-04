@@ -10,7 +10,7 @@ pipeline {
 
         stage('Run unit test(s)') {
             steps {
-                echo 'Running unit tests...'
+//                echo 'Running unit tests...'
                 sh 'npm run test:e2e'
             }
         }
