@@ -5,6 +5,7 @@ import { AppModule } from "../src/app.module";
 import mongoose from "mongoose";
 
 describe("AppController (e2e)", () => {
+  jest.setTimeout(30000);
   let app: INestApplication;
 
   beforeEach(async () => {
