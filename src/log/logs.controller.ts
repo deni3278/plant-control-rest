@@ -1,35 +1,35 @@
-import { Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
-import { LogService } from "./log.service";
-import { CreateLogDto } from "./dto/create-log.dto";
-import { Log } from "./log.schema";
+import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
+import {LogService} from "./log.service";
+import {CreateLogDto} from "./dto/create-log.dto";
+import {Log} from "./log.schema";
 
 @Controller("logs")
 export class LogsController {
-  constructor(private readonly logService: LogService) {
-  }
+    constructor(private readonly logService: LogService) {
+    }
 
-  @Post()
-  create(@Body() createLogDto: CreateLogDto) {
-    return this.logService.create(createLogDto as Log);
-  }
+    @Post()
+    create(@Body() createLogDto: CreateLogDto) {
+        return this.logService.create(createLogDto as Log);
+    }
 
-  @Get()
-  findAll() {
-    return this.logService.findAll();
-  }
+    @Get()
+    findAll() {
+        return this.logService.findAll();
+    }
 
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.logService.findOne(id);
-  }
+    @Get(":id")
+    findOne(@Param("id") id: string) {
+        return this.logService.findOne(id);
+    }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateLogDto: UpdateLogDto) {
-  //   return this.logService.update(id, updateLogDto);
-  // }
+    // @Patch(':id')
+    // update(@Param('id') id: string, @Body() updateLogDto: UpdateLogDto) {
+    //   return this.logService.update(id, updateLogDto);
+    // }
 
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.logService.remove(id);
-  }
+    @Delete(":id")
+    remove(@Param("id") id: string) {
+        return this.logService.remove(id);
+    }
 }

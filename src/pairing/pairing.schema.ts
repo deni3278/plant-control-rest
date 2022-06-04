@@ -1,23 +1,23 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose, { Document } from "mongoose";
-import { Plant } from "../plant/plant.schema";
-import { Logger } from "../logger/logger.schema";
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import mongoose, {Document} from "mongoose";
+import {Plant} from "../plant/plant.schema";
+import {Logger} from "../logger/logger.schema";
 
 export type PairingDocument = Pairing & Document;
 
 @Schema()
 export class Pairing {
-  @Prop()
-  name: string;
+    @Prop({required: true})
+    name: string;
 
-  @Prop({ default: Date.now })
-  createdAt: Date;
+    @Prop({required: true, default: Date.now})
+    createdAt: Date;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Plant", required: true })
-  plant: Plant;
+    @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Plant", required: true})
+    plant: Plant;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: "Logger", required: true })
-  logger: Logger;
+    @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Logger", required: true})
+    logger: Logger;
 
 }
 

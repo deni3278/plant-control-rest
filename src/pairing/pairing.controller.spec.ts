@@ -1,20 +1,20 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { PairingsController } from "./pairings.controller";
-import { PairingService } from "./pairing.service";
+import {Test, TestingModule} from "@nestjs/testing";
+import {PairingsController} from "./pairings.controller";
+import {PairingService} from "./pairing.service";
 
 describe("PairingController", () => {
-  let controller: PairingsController;
+    let controller: PairingsController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [PairingsController],
-      providers: [PairingService]
-    }).compile();
+    beforeEach(async () => {
+        const module: TestingModule = await Test.createTestingModule({
+            controllers: [PairingsController],
+            providers: [PairingService]
+        }).compile();
 
-    controller = module.get<PairingsController>(PairingsController);
-  });
+        controller = module.get<PairingsController>(PairingsController);
+    });
 
-  it("should be defined", () => {
-    expect(controller).toBeDefined();
-  });
+    it("should be defined", () => {
+        expect(controller).toBeDefined();
+    });
 });

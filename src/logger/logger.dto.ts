@@ -1,3 +1,3 @@
 export interface CreateLoggerDto {
-  name: string;
+    name: string;
 }

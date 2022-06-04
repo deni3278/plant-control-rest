@@ -1,4 +1,4 @@
 export class CreatePlantDto {
-  name: string;
-  image?: Buffer;
+    name: string;
+    image?: Buffer;
 }

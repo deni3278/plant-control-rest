@@ -1,18 +1,18 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import {Document} from "mongoose";
 
 export type PlantDocument = Plant & Document;
 
 @Schema()
 export class Plant {
-  @Prop()
-  name: string;
+    @Prop({required: true})
+    name: string;
 
-  @Prop({ default: Date.now })
-  createdAt: Date;
+    @Prop({required: true, default: Date.now})
+    createdAt: Date;
 
-  @Prop()
-  image?: Buffer;
+    @Prop()
+    image?: Buffer;
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);
