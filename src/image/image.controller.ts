@@ -23,7 +23,7 @@ export class ImageController {
     @Post()
     @UseInterceptors(FileInterceptor('image'))
     create(@Body() createImageDto: CreateImageDto, @UploadedFile() imageFile: Express.Multer.File) {
-        const image: Image = {image: imageFile.buffer, plant: createImageDto.plantId};
+        const image: Image = {image: imageFile.buffer, plant: createImageDto.plant};
         return this.imageService.create(image);
     }
 
