@@ -5,7 +5,7 @@ import {Plant} from "../plant/plant.schema";
 @Schema()
 export class Image {
     @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Plant", required: true})
-    plant: Plant;
+    plantId: string;
 
     @Prop()
     image?: Buffer;

@@ -22,7 +22,6 @@ export abstract class BaseService<T> {
     }
 
     async create(item: T): Promise<T> {
-
         return this._repository.create(item);
     }
 

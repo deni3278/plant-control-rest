@@ -8,9 +8,10 @@ export class Plant {
     @Prop({required: true})
     name: string;
 
-    @Prop({required: true, default: Date.now})
+    @Prop({default: Date.now})
     createdAt: Date;
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);
+
 

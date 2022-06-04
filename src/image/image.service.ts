@@ -11,6 +11,6 @@ export class ImageService extends BaseService<Image> {
     }
 
     async findOneByPlantId(imageId: string): Promise<Image> {
-        return this.imageModel.findOne({plant: imageId});
+        return this.imageModel.findOne({plantId: imageId});
     }
 }
