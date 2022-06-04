@@ -9,4 +9,5 @@ export class PlantService extends BaseService<Plant> {
     constructor(@InjectModel(Plant.name) private plantModel: Model<PlantDocument>) {
         super(plantModel);
     }
+
 }

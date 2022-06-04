@@ -5,11 +5,12 @@ import {PlantModule} from "./plant/plant.module";
 import {PairingModule} from "./pairing/pairing.module";
 import {LogModule} from "./log/log.module";
 import {CertificateModule} from "./certificate/certificate.module";
+import { ImageModule } from './image/image.module';
 
 @Module({
     imports: [
         MongooseModule.forRoot(process.env.CONNECTION_STRING || "mongodb://localhost/plantDB"),
-        LoggerModule, PlantModule, PairingModule, LogModule, CertificateModule
+        LoggerModule, PlantModule, PairingModule, LogModule, CertificateModule, ImageModule
     ],
     controllers: [],
     providers: []
