@@ -34,7 +34,7 @@ services:
     ports:
       - ${REST_PORT}:80
     environment:
-      - CONNECTION_STRING=mongodb://${DB_USER}:${DB_PASS}@${DB_CONTAINER}/plant-control
+      - CONNECTION_STRING=mongodb://${DB_USER}:${DB_PASS}@${DB_CONTAINER}/plantDB?authSource=admin&directConnection=true&ssl=false
     depends_on:
       - db
 

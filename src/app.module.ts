@@ -8,7 +8,7 @@ import {CertificateModule} from "./certificate/certificate.module";
 
 @Module({
     imports: [
-        MongooseModule.forRoot(process.env.CONNECTION_STRING || "mongodb://localhost/plant-db"),
+        MongooseModule.forRoot(process.env.CONNECTION_STRING || "mongodb://localhost/plantDB"),
         LoggerModule, PlantModule, PairingModule, LogModule, CertificateModule
     ],
     controllers: [],
