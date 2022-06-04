@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Build, Dockerize, and deploy') {
+        stage('Dockerize and deploy') {
             when {
                 anyOf {
                     changeset 'src/**'
@@ -22,12 +22,6 @@ pipeline {
             }
 
             stages {
-                stage('Build API') {
-                    steps {
-                        sh 'sudo npm run build'
-                    }
-                }
-
                 stage('Build image(s)') {
                     steps {
                         sh 'docker compose --env-file test.env build'
