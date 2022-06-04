@@ -3,8 +3,8 @@ import { PairingService } from "./pairing.service";
 import { CreatePairingDto } from "./dto/create-pairing.dto";
 import { Pairing } from "./pairing.schema";
 
-@Controller("pairing")
-export class PairingController {
+@Controller("pairings")
+export class PairingsController {
   constructor(private readonly pairingService: PairingService) {
   }
 

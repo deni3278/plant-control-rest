@@ -3,8 +3,8 @@ import { LogService } from "./log.service";
 import { CreateLogDto } from "./dto/create-log.dto";
 import { Log } from "./log.schema";
 
-@Controller("log")
-export class LogController {
+@Controller("logs")
+export class LogsController {
   constructor(private readonly logService: LogService) {
   }
 

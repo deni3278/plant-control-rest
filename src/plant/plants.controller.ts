@@ -4,8 +4,8 @@ import { CreatePlantDto } from "./dto/create-plant.dto";
 import { UpdatePlantDto } from "./dto/update-plant.dto";
 import { Plant } from "./plant.schema";
 
-@Controller("plant")
-export class PlantController {
+@Controller("plants")
+export class PlantsController {
   constructor(private readonly plantService: PlantService) {
   }
 
