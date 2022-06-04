@@ -3,8 +3,8 @@ import { CertificateService } from "./certificate.service";
 import { CreateCertificateDto } from "./dto/create-certificate.dto";
 import { Certificate } from "./certificate.schema";
 
-@Controller("certificate")
-export class CertificateController {
+@Controller("certificates")
+export class CertificatesController {
   constructor(private readonly certificateService: CertificateService) {
   }
 

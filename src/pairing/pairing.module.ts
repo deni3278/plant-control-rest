@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { PairingService } from "./pairing.service";
-import { PairingController } from "./pairing.controller";
+import { PairingsController } from "./pairings.controller";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Logger, LoggerSchema } from "../logger/logger.schema";
 import { Pairing, PairingSchema } from "./pairing.schema";
@@ -12,7 +12,7 @@ import { Plant, PlantSchema } from "../plant/plant.schema";
     MongooseModule.forFeature([{ name: Logger.name, schema: LoggerSchema }]),
     MongooseModule.forFeature([{ name: Plant.name, schema: PlantSchema }])
   ],
-  controllers: [PairingController],
+  controllers: [PairingsController],
   providers: [PairingService]
 })
 export class PairingModule {

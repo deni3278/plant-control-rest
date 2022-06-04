@@ -2,8 +2,8 @@ import { Body, Controller, Get, Post } from "@nestjs/common";
 import { LoggerService } from "./logger.service";
 import { CreateLoggerDto } from "./logger.dto";
 
-@Controller("logger")
-export class LoggerController {
+@Controller("loggers")
+export class LoggersController {
 
   constructor(private loggerService: LoggerService) {
   }
