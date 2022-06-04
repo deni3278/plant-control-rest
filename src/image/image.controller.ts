@@ -2,9 +2,10 @@ import {
     Body,
     Controller,
     Delete,
-    Get, Header,
+    Get,
+    Header,
     Param,
-    Post, Response,
+    Post,
     StreamableFile,
     UploadedFile,
     UseInterceptors
@@ -22,7 +23,7 @@ export class ImageController {
     @Post()
     @UseInterceptors(FileInterceptor('image'))
     create(@Body() createImageDto: CreateImageDto, @UploadedFile() imageFile: Express.Multer.File) {
-        const image: Image = {image: imageFile.buffer, plantId: createImageDto.plantId};
+        const image: Image = {image: imageFile.buffer, plant: createImageDto.plantId};
         return this.imageService.create(image);
     }
 

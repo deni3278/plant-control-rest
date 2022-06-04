@@ -1,12 +1,11 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import mongoose, {Document, ObjectId} from "mongoose";
-
-export type ImageDocument = Image & Document;
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import mongoose from "mongoose";
+import {Plant} from "../plant/plant.schema";
 
 @Schema()
 export class Image {
     @Prop({type: mongoose.Schema.Types.ObjectId, ref: "Plant", required: true})
-    plantId: string;
+    plant: Plant;
 
     @Prop()
     image?: Buffer;

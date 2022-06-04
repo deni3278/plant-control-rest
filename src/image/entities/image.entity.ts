@@ -1,1 +1,2 @@
-export class Image {}
+export class Image {
+}
