@@ -1,7 +1,5 @@
 import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
 import {CertificateService} from "./certificate.service";
-import {CreateCertificateDto} from "./dto/create-certificate.dto";
-import {Certificate} from "./certificate.schema";
 
 @Controller("certificates")
 export class CertificatesController {
@@ -9,8 +7,8 @@ export class CertificatesController {
     }
 
     @Post()
-    create(@Body() createCertificateDto: CreateCertificateDto) {
-        return this.certificateService.create(<Certificate>createCertificateDto);
+    create(@Body() plantId: string) {
+        return this.certificateService.generate(plantId);
     }
 
     @Get()
