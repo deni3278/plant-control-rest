@@ -7,8 +7,8 @@ export class CertificatesController {
     }
 
     @Post()
-    create(@Body() plantId: string) {
-        return this.certificateService.generate(plantId);
+    create(@Body() dto: {plantId: string}) {
+        return this.certificateService.generate(dto.plantId);
     }
 
     @Get()
