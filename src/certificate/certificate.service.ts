@@ -65,19 +65,19 @@ export class CertificateService extends BaseService<Certificate> {
         return this.certificateModel.create({
             plant: plant,
             temperature: {
-                avg: statistics.avgTemp ??= -99,
-                min: statistics.minTemp ??= -99,
-                max: statistics.maxTemp ??= -99
+                avg: statistics.avgTemp,
+                min: statistics.minTemp,
+                max: statistics.maxTemp
             },
             humidity: {
-                avg: statistics.avgHumidity ??= -99,
-                min: statistics.minHumidity ??= -99,
-                max: statistics.maxHumidity ??= -99
+                avg: statistics.avgHumidity,
+                min: statistics.minHumidity,
+                max: statistics.maxHumidity
             },
             moisture: {
-                avg: statistics.avgMoisture ??= -99,
-                min: statistics.minMoisture ??= -99,
-                max: statistics.maxMoisture ??= -99
+                avg: statistics.avgMoisture,
+                min: statistics.minMoisture,
+                max: statistics.maxMoisture
             }
         });
     }
