@@ -18,6 +18,12 @@ export class LogsController {
         return this.logService.findAll();
     }
 
+    @Get("/plants/:id")
+    findByPlantId(@Param("id") id: string) {
+        return this.logService.findByPlant(id);
+    }
+
+
     @Get(":id")
     findOne(@Param("id") id: string) {
         return this.logService.findOne(id);
