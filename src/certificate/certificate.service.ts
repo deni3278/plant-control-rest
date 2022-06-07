@@ -14,7 +14,7 @@ export class CertificateService extends BaseService<Certificate> {
                 @InjectModel(Plant.name) private plantModel: Model<PlantDocument>,
                 @InjectModel(Pairing.name) private pairingModel: Model<PairingDocument>,
                 @InjectModel(Log.name) private logModel: Model<LogDocument>) {
-        super(certificateModel);
+        super(certificateModel,[{path: "plant", model: plantModel }]);
     }
 
     async generate(plantId: string): Promise<Certificate> {
