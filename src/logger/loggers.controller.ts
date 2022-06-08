@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from "@nestjs/common";
+import {Body, Controller, Delete, Get, Post, Query} from "@nestjs/common";
 import {LoggerService} from "./logger.service";
 import {CreateLoggerDto} from "./logger.dto";
 
@@ -21,6 +21,12 @@ export class LoggersController {
             isPaired: false,
             name: logger.name
         });
+    }
+
+    @Delete("/:id")
+    async deleteLogger(@Query("id") id: string) {
+
+        return await this.loggerService.remove(id);
     }
 
 }
