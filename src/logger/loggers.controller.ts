@@ -23,7 +23,7 @@ export class LoggersController {
         });
     }
 
-    @Delete("/:id")
+    @Delete(":id")
     async deleteLogger(@Query("id") id: string) {
 
         return await this.loggerService.remove(id);
