@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
+import {Body, Controller, Delete, Get, NotFoundException, Param, Post} from "@nestjs/common";
 import {CertificateService} from "./certificate.service";
 
 @Controller("certificates")
@@ -17,8 +17,12 @@ export class CertificatesController {
     }
 
     @Get(":id")
-    findOne(@Param("id") id: string) {
-        return this.certificateService.findOne(id);
+    async findOne(@Param("id") id: string) {
+        const certificate = await this.certificateService.findOne(id);
+
+        if (certificate === undefined) throw new NotFoundException();
+
+        return certificate;
     }
 
     // @Patch(':id')

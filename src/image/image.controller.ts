@@ -3,7 +3,7 @@ import {
     Controller,
     Delete,
     Get,
-    Header,
+    Header, NotFoundException,
     Param,
     Post,
     StreamableFile,
@@ -33,8 +33,12 @@ export class ImageController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.imageService.findOne(id);
+    async findOne(@Param('id') id: string) {
+        const image = await this.imageService.findOne(id);
+
+        if (image === undefined) throw new NotFoundException();
+
+        return image;
     }
 
     @Get("plants/:id")

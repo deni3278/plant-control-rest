@@ -1,4 +1,15 @@
-import {Body, Controller, Delete, Get, Param, Patch, Post, UploadedFile, UseInterceptors} from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    NotFoundException,
+    Param,
+    Patch,
+    Post,
+    UploadedFile,
+    UseInterceptors
+} from "@nestjs/common";
 import {PlantService} from "./plant.service";
 import {CreatePlantDto} from "./dto/create-plant.dto";
 import {UpdatePlantDto} from "./dto/update-plant.dto";
@@ -14,6 +25,7 @@ export class PlantsController {
     @UseInterceptors(FileInterceptor('image'))
     create(@Body() createPlantDto: CreatePlantDto, @UploadedFile() imageFile: Express.Multer.File) {
         createPlantDto.image = imageFile?.buffer;
+
         return this.plantService.create(createPlantDto);
     }
 
@@ -23,8 +35,12 @@ export class PlantsController {
     }
 
     @Get(":id")
-    findOne(@Param("id") id: string) {
-        return this.plantService.findOne(id);
+    async findOne(@Param("id") id: string) {
+        const plant = await this.plantService.findOne(id);
+
+        if (plant === undefined) throw new NotFoundException();
+
+        return plant
     }
 
     @Patch(":id")

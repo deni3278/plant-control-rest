@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
+import {Body, Controller, Delete, Get, NotFoundException, Param, Post} from "@nestjs/common";
 import {LoggerService} from "./logger.service";
 import {CreateLoggerDto} from "./logger.dto";
 
@@ -16,8 +16,11 @@ export class LoggersController {
 
     @Get(":id")
     async getLogger(@Param("id") id: string) {
+        const logger = await this.loggerService.findOne(id);
 
-        return await this.loggerService.findOne(id);
+        if (logger === undefined) throw new NotFoundException();
+
+        return logger;
     }
 
     @Post()

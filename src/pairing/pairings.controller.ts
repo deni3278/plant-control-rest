@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
+import {Body, Controller, Delete, Get, NotFoundException, Param, Post} from "@nestjs/common";
 import {PairingService} from "./pairing.service";
 import {CreatePairingDto} from "./dto/create-pairing.dto";
 import {Pairing} from "./pairing.schema";
@@ -19,8 +19,12 @@ export class PairingsController {
     }
 
     @Get(":id")
-    findOne(@Param("id") id: string) {
-        return this.pairingService.findOne(id);
+    async findOne(@Param("id") id: string) {
+        const pairing = await this.pairingService.findOne(id);
+
+        if (pairing === undefined) throw new NotFoundException();
+
+        return pairing;
     }
 
     // @Patch(':id')

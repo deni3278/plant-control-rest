@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
+import {Body, Controller, Delete, Get, NotFoundException, Param, Post} from "@nestjs/common";
 import {LogService} from "./log.service";
 import {CreateLogDto} from "./dto/create-log.dto";
 import {Log} from "./log.schema";
@@ -19,8 +19,12 @@ export class LogsController {
     }
 
     @Get("/plants/:id")
-    findByPlantId(@Param("id") id: string) {
-        return this.logService.findByPlant(id);
+    async findByPlantId(@Param("id") id: string) {
+        const log = await this.logService.findOne(id);
+
+        if (log === undefined) throw new NotFoundException();
+
+        return log;
     }
 
 
