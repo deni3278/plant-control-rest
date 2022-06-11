@@ -18,7 +18,7 @@ export class LoggersController {
     async getLogger(@Param("id") id: string) {
         const logger = await this.loggerService.findOne(id);
 
-        if (logger === undefined) throw new NotFoundException();
+        if (logger === null) throw new NotFoundException();
 
         return logger;
     }

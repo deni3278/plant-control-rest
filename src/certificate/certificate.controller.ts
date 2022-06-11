@@ -20,7 +20,7 @@ export class CertificatesController {
     async findOne(@Param("id") id: string) {
         const certificate = await this.certificateService.findOne(id);
 
-        if (certificate === undefined) throw new NotFoundException();
+        if (certificate === null) throw new NotFoundException();
 
         return certificate;
     }

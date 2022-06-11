@@ -22,7 +22,7 @@ export class PairingsController {
     async findOne(@Param("id") id: string) {
         const pairing = await this.pairingService.findOne(id);
 
-        if (pairing === undefined) throw new NotFoundException();
+        if (pairing === null) throw new NotFoundException();
 
         return pairing;
     }

@@ -38,7 +38,7 @@ export class PlantsController {
     async findOne(@Param("id") id: string) {
         const plant = await this.plantService.findOne(id);
 
-        if (plant === undefined) throw new NotFoundException();
+        if (plant === null) throw new NotFoundException();
 
         return plant
     }

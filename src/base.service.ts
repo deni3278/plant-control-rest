@@ -19,7 +19,7 @@ export abstract class BaseService<T> {
 
             return leanDoc as T;
         } catch {
-            return undefined;
+            return null;
         }
     }
 

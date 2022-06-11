@@ -36,7 +36,7 @@ export class ImageController {
     async findOne(@Param('id') id: string) {
         const image = await this.imageService.findOne(id);
 
-        if (image === undefined) throw new NotFoundException();
+        if (image === null) throw new NotFoundException();
 
         return image;
     }
