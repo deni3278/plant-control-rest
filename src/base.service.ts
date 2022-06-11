@@ -14,9 +14,13 @@ export abstract class BaseService<T> {
     }
 
     async findOne(id: any): Promise<T> {
-        const leanDoc = await this._repository.findById(id).populate(this._populateOnFind).exec();
+        try {
+            const leanDoc = await this._repository.findById(id).populate(this._populateOnFind).exec();
 
-        return leanDoc as T;
+            return leanDoc as T;
+        } catch {
+            return undefined;
+        }
     }
 
     async create(item: T): Promise<T> {
