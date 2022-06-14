@@ -1,7 +1,7 @@
 import {Body, Controller, Delete, Get, NotFoundException, Param, Post} from "@nestjs/common";
 import {PairingService} from "./pairing.service";
 import {CreatePairingDto} from "./dto/create-pairing.dto";
-import {Pairing} from "./pairing.schema";
+import {Pairing, PairingDocument} from "./pairing.schema";
 
 @Controller("pairings")
 export class PairingsController {
@@ -9,8 +9,10 @@ export class PairingsController {
     }
 
     @Post()
-    create(@Body() createPairingDto: CreatePairingDto) {
-        return this.pairingService.create(<Pairing>createPairingDto);
+    async create(@Body() createPairingDto: CreatePairingDto) {
+        const pairing = await this.pairingService.create(<Pairing>createPairingDto);
+
+        return (pairing as PairingDocument)._id
     }
 
     @Get()
