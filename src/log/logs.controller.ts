@@ -20,7 +20,7 @@ export class LogsController {
 
     @Get("/plants/:id")
     async findByPlantId(@Param("id") id: string) {
-        const log = await this.logService.findOne(id);
+        const log = await this.logService.findByPlant(id);
 
         if (log === null) throw new NotFoundException();
 
